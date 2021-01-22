@@ -1,24 +1,21 @@
-a = [1, 5, 3]
-b = [1, 5, 1, 5]
-c = [1, 3, 1, 5, 3, 3]
-for i in b:
-    a.append(i)
-t = 0
-for i in a:
-    if i == 5:
-        t += 1
-print(t)
-d = []
-for i in a:
-    if i != 5:
-        d.append(i)
-for i in c:
-    d.append(i)
-t = 0
-for i in d:
-    if i == 3:
-        t += 1
-print(t)
-print(d)
+def find_min(some_list):
+    min_val = some_list[0]
 
-# TODO переписать программу
+    for i in some_list:
+        if i < min_val:
+            min_val = i
+
+    return min_val
+
+
+start_list = [1, 4, -3, 0, 10]
+result_list = []
+
+print('Изначальный список:', start_list)
+
+while len(start_list) > 0:
+    number = find_min(start_list)
+    result_list.append(number)
+    start_list.remove(number)
+
+print('Отсортированный список:', result_list)
