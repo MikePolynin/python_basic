@@ -32,10 +32,14 @@ def format_text(text):
 
     for i in range(len(text)):
         for j in range(len(text[i])):
-            if '(' in text[i][j]:
+            if '/' in text[i][j]:
+                text[i][j] = text[i][j].replace('/', '')
+            elif '(' in text[i][j]:
                 text[i][j] = text[i][j].replace('(', '`')
             elif '+' in text[i][j]:
                 text[i][j] = text[i][j].replace('+', '*')
+            elif '-' in text[i][j]:
+                text[i][j] = text[i][j].replace('-', ',')
             elif '.' in text[i][j]:
                 text[i][j] = text[i][j].replace('.', '-')
         decode_str = ' '.join(text[i])
@@ -58,19 +62,12 @@ def decode(moved_text):
             moved_string = []
 
     for i in range(len(new_text)):
-        step = 0
-        for j in range(len(new_text[i][0])):
-            if new_text[i][0][j].isupper():
-                step = len(new_text[i][0]) - j
-                break
+        step = 3 + i
 
-        new_step = 0
         for j in range(len(new_text[i])):
-            if '/' in new_text[i][j]:
-                new_text[i][j] = new_text[i][j].replace('/', '')
 
             if step >= len(new_text[i][j]):
-                new_step %= len(new_text[i][j])
+                new_step = step % len(new_text[i][j])
             else:
                 new_step = step
 
