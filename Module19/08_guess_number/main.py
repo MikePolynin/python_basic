@@ -1,7 +1,11 @@
+import random
+
+
 def guess_number():
     max_number = int(input('Введите максимальное число: '))
 
-    numbers_list = [i for i in range(1, max_number + 1)]
+    numbers_list = {i for i in range(1, max_number + 1)}
+    hidden_number = random.randint(1, max_number)
 
     while True:
         numbers = input('\nНужное число есть среди вот этих чисел: ')
@@ -13,17 +17,21 @@ def guess_number():
             break
 
         else:
-            answer = input('Ответ Артёма: ')
             check_list = numbers.split(' ')
 
-            if answer == 'Нет' or answer == 'нет':
-                for number in check_list:
-                    if int(number) in numbers_list:
-                        numbers_list.remove(int(number))
+            answer = False
+            if str(hidden_number) in check_list:
+                answer = True
+                print('Ответ Артёма: да')
             else:
-                first_index = numbers_list.index(int(check_list[0]))
-                last_index = numbers_list.index(int(check_list[len(check_list) - 1]))
-                numbers_list = numbers_list[first_index:last_index + 1]
+                print('Ответ Артёма: нет')
+
+            if not answer:
+                for number in check_list:
+                    numbers_list.discard(int(number))
+            else:
+                numbers_list.clear()
+                numbers_list = {int(i) for i in check_list}
 
 
 guess_number()
