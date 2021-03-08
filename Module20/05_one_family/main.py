@@ -7,7 +7,7 @@ def one_family():
     print()
 
     for family in families:
-        if surname.title() in family:
+        if surname.title() in family or surname[:-1].title() in family:
             print(family)
 
 
