@@ -1,9 +1,9 @@
 def sum_count(numbers, result=0):
-    for i in range(len(numbers)):
-        if isinstance(numbers[i], int):
-            result += numbers[i]
+    for i, num in enumerate(numbers):
+        if isinstance(num, int):
+            result += num
         else:
-            result += sum_count(numbers[i], 0)
+            result += sum_count(num, 0)
 
     return result
 
