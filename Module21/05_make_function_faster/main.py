@@ -1,8 +1,6 @@
-nums = dict()
-
-
-def calculating_math_func(data):
-    global nums
+def calculating_math_func(data, nums=None):
+    if nums is None:
+        nums = dict()
 
     if data in nums:
         result = nums[data]
