@@ -1,16 +1,14 @@
 def searching(user_key, this_dict, user_depth, depth=1):
     if user_key in this_dict.keys():
-        if user_depth == 0:
-            print('\nРезультат поиска:', this_dict[user_key])
-        elif user_depth >= depth or user_depth == 0:
-            print('\nРезультат поиска:', this_dict[user_key])
-        else:
-            print('\nКлюча {0} не найдено'.format(user_key))
-
+        print('\nРезультат поиска:', this_dict[user_key])
+    elif user_depth < depth and user_depth != 0:
+        print('\nКлюча {0} не найдено'.format(user_key))
     else:
         for value in this_dict.values():
             if isinstance(value, dict):
                 searching(user_key, value, user_depth, depth + 1)
+                break
+            print('\nКлюча {0} не найдено'.format(user_key))
 
 
 def search_element_2():
