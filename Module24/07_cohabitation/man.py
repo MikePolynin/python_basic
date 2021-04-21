@@ -1,3 +1,5 @@
+import random
+
 from house import House
 
 
@@ -34,3 +36,21 @@ class Man:
     def check_is_dead(self):
         if self.satiety < 0:
             self.is_dead = True
+
+    def act(self):
+        if self.is_dead:
+            print(self.name, 'умер')
+            return 'dead'
+        number = random.randint(1, 6)
+        if self.satiety < 20:
+            self.eat()
+        elif self.house.fridge_food < 10:
+            self.buy_food()
+        elif self.house.stand_money < 50:
+            self.work()
+        elif number == 1:
+            self.work()
+        elif number == 2:
+            self.eat()
+        else:
+            self.play()
