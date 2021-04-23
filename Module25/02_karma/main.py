@@ -1,1 +1,3 @@
-# TODO здесь писать код
+from karma import Karma
+
+new_karma = Karma
