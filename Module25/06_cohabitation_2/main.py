@@ -1,10 +1,12 @@
 from house import House
-from family import Husband, Wife, Cat
+from family import Husband, Wife, Cat, Child
 
 
 def cohabitation_2():
     house = House
-    family = [Husband('Борис', house), Wife('Анна', house), Cat('Барсик', house)]
+    family = [Husband('Борис', house), Wife('Анна', house),
+              Cat('Барсик', house), Cat('Мурзик', house), Cat('Васька', house),
+              Child('Малой', house)]
     alives = family
 
     day = 1

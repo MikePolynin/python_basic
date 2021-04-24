@@ -95,3 +95,25 @@ class Cat(Person):
             self.eat()
         else:
             random.choice([self.sleep(), self.scratch()])
+
+
+class Child(Person):
+    def eat(self):
+        self.satiety += 10
+        self.house.fridge_food -= 10
+
+    def sleep(self):
+        self.satiety -= 10
+
+    def play(self):
+        self.satiety -= 10
+        self.house.mud += 5
+
+    def act(self):
+        if self.is_dead:
+            print(self.name, 'is dead')
+            return 'dead'
+        if self.satiety < 10:
+            self.eat()
+        else:
+            random.choice([self.sleep(), self.play()])
