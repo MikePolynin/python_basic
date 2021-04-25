@@ -18,8 +18,10 @@ def taxes():
     print('Налог на машину =', car_tax)
     print('Налог на загородный дом =', country_house_tax)
 
+    print('\nОбщая сумма налогов {} рублей'.format(apartment_tax + car_tax + country_house_tax))
+
     if sum_tax > money:
-        print('\nНа налоги не хватает {} рублей'.format(sum_tax - money))
+        print('На налоги не хватает {} рублей'.format(sum_tax - money))
 
 
 taxes()
