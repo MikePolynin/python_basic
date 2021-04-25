@@ -15,8 +15,7 @@ def one_day():
 class Karma:
     karma_level = 0
     day = 1
-
-    open('karma.log', 'w').close()
+    log = []
 
     while karma_level < 500:
         try:
@@ -25,7 +24,10 @@ class Karma:
             print('Day {}, karma_level {}'.format(day, karma_level))
         except (KillError, DrunkError, CarCrashError, GluttonyError, DepressionError) as day_except:
             log_line = 'Day {}, mistake: {}'.format(day, day_except)
+            log.append(log_line)
             print(log_line)
-            with open('karma.log', 'a') as karma_log:
-                karma_log.write(log_line + '\n')
         day += 1
+
+    with open('karma.log', 'w') as karma_log:
+        for line in log:
+            karma_log.write(line + '\n')
