@@ -27,7 +27,7 @@ class Husband(Person):
         elif self.house.stand_money < 20:
             self.work()
         else:
-            self.play()
+            random.choice([self.play(), self.caress_cat()])
 
 
 class Wife(Person):
@@ -66,6 +66,8 @@ class Wife(Person):
             self.buy_fur()
         elif self.house.mud >= 100:
             self.clean()
+        else:
+            self.caress_cat()
 
 
 class Cat(Person):
@@ -116,4 +118,4 @@ class Child(Person):
         if self.satiety < 10:
             self.eat()
         else:
-            random.choice([self.sleep(), self.play()])
+            random.choice([self.sleep(), self.play(), self.caress_cat()])

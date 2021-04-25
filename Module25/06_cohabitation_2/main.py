@@ -15,6 +15,7 @@ def cohabitation_2():
         if len(alives) > 0:
             print('Наступил {} день'.format(day))
             for unit in alives:
+                unit.check_mud_level()
                 if unit.act() == 'dead':
                     alives.remove(unit)
             if day == 365:
