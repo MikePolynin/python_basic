@@ -73,7 +73,6 @@ class Wife(Person):
 class Cat(Person):
     def __init__(self, name, house):
         super().__init__(name, house)
-        self.happiness = None
 
     def caress_cat(self):
         pass

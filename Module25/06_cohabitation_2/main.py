@@ -11,6 +11,7 @@ def cohabitation_2():
 
     day = 1
     while day < 366:
+
         house.mud += 5
         if len(alives) > 0:
             print('Наступил {} день'.format(day))
