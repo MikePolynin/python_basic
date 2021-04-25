@@ -26,6 +26,22 @@ def task_manager():
 
     manager.print()
 
+    manager.delete_task('buy food')
+
+    manager.print()
+
+    manager.new_task('eat', 2)
+
+    manager.print()
+
+    manager.new_task('eat', 3)
+
+    manager.print()
+
+    manager.new_task('eat', 1)
+
+    manager.print()
+
 
 stack()
 task_manager()
