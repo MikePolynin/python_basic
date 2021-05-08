@@ -1,7 +1,7 @@
 import os
 
 
-def file_line_count(address, count):
+def file_line_count(address: str, count: int) -> int:
     with open(address, 'r') as file:
         for line in file:
             if line != len(line) * line[0]:
@@ -10,7 +10,7 @@ def file_line_count(address, count):
     return count
 
 
-def str_count(address: str, count=0):
+def str_count(address: str, count: int = 0) -> int:
     norm_address = os.path.normpath(address)
     for elem in os.listdir(norm_address):
         if not os.path.isdir(os.path.join(norm_address, elem)) and elem.endswith('.py'):
