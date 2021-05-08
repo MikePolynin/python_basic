@@ -1,7 +1,7 @@
 import os
 
 
-def gen_files_path(looking_dir: str, address: str = os.path.abspath(os.sep)):
+def gen_files_path(looking_dir: str, address: str = os.path.abspath(os.sep)) -> str:
     for elem in os.listdir(address):
         yield os.path.join(address, elem)
 
