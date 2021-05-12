@@ -11,7 +11,19 @@ def debug(func: Callable) -> Callable:
 
     @functools.wraps(func)
     def wrapper(*args, **kwargs) -> Any:
-        print('\nВызывается {}'.format(func.__name__), args, kwargs)
+
+        def stringify_arg(arg: Any) -> str:
+            if isinstance(arg, str):
+                return '"{0}"'.format(arg)
+            else:
+                return str(arg)
+
+        args_str = [stringify_arg(a) for a in args]
+        kwargs_str = ['{0}={1}'.format(k, stringify_arg(v)) for k, v in kwargs.items()]
+
+        params = ', '.join(args_str + kwargs_str)
+
+        print('\nВызывается {}'.format(func.__name__) + '(' + params + ')')
 
         result = func(*args, **kwargs)
 
