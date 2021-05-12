@@ -2,8 +2,6 @@ import datetime
 from typing import Any, Callable
 import functools
 
-exp_list = []
-
 
 def logging(func: Callable) -> Callable:
     """
@@ -15,7 +13,6 @@ def logging(func: Callable) -> Callable:
 
     @functools.wraps(func)
     def wrapper(*args, **kwargs) -> Any:
-        global exp_list
 
         print('Название функции: {}'.format(func.__name__))
         print(func.__doc__)
@@ -24,15 +21,13 @@ def logging(func: Callable) -> Callable:
             return func(*args, **kwargs)
         except Exception as exp:
             print(exp)
-            exp_list.append('В функции {0} произошла ошибка {1} в {2}'.format(
-                func.__name__,
-                exp,
-                datetime.datetime.now()
-            ))
 
-        with open('function_errors.log', 'w', encoding='utf8') as log_file:
-            for line in exp_list:
-                log_file.write(line + '\n')
+            with open('function_errors.log', 'a', encoding='utf8') as log_file:
+                log_file.write('В функции {0} произошла ошибка {1} в {2}\n'.format(
+                    func.__name__,
+                    exp,
+                    datetime.datetime.now()
+                ))
 
     return wrapper()
 
