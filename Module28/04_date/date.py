@@ -1,4 +1,15 @@
 class Date:
+    def __init__(self, day: int, month: int, year: int) -> None:
+        self.__day = day
+        self.__month = month
+        self.__year = year
+
+    def __str__(self):
+        return 'День: {day}     Месяц: {month}      Год: {year}' \
+            .format(day=self.__day,
+                    month=self.__month,
+                    year=self.__year)
+
     @classmethod
     def to_int_list(cls, input_date: str):
         numbers = None
@@ -37,12 +48,7 @@ class Date:
         return True
 
     @classmethod
-    def from_string(cls, input_date: str) -> str:
+    def from_string(cls, input_date: str) -> 'Date':
         if cls.is_date_valid(input_date):
             numbers = cls.to_int_list(input_date)
-            return 'День: {day}     Месяц: {month}      Год: {year}' \
-                .format(day=numbers[0],
-                        month=numbers[1],
-                        year=numbers[2])
-        else:
-            return 'False'
+            return Date(numbers[0], numbers[1], numbers[2])
