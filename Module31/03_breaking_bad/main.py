@@ -19,22 +19,27 @@ def breaking_bad() -> None:
             max_death_episode = requests.get('https://www.breakingbadapi.com/api/episodes')
             my_episode = json.loads(max_death_episode.text)
 
+            season = record['season']
+            episode_number = record['episode']
+            number_of_deaths = record['number_of_deaths']
+            names = record['death']
+
             for episode in my_episode:
                 if int(episode['season']) == record['season'] and int(episode['episode']) == record['episode']:
                     print('Episode ID: {}'.format(episode['episode_id']))
                     data_for_writing['Episode ID'] = episode['episode_id']
 
-            print('Season: {}'.format(record['season']))
-            data_for_writing['Season'] = record['season']
+            print('Season: {}'.format(season))
+            data_for_writing['Season'] = season
 
-            print('Episode: {}'.format(record['episode']))
-            data_for_writing['Episode'] = record['episode']
+            print('Episode: {}'.format(episode_number))
+            data_for_writing['Episode'] = episode_number
 
-            print('Death count: {}'.format(record['number_of_deaths']))
-            data_for_writing['Death count'] = record['number_of_deaths']
+            print('Death count: {}'.format(number_of_deaths))
+            data_for_writing['Death count'] = number_of_deaths
 
-            print('Names: {}'.format(record['death']))
-            data_for_writing['Names'] = record['death']
+            print('Names: {}'.format(names))
+            data_for_writing['Names'] = names
 
     with open('BB_data.json', 'w') as file:
         json.dump(data_for_writing, file, indent=4)
