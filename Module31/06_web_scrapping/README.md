@@ -1,4 +1,4 @@
-## Задача 6. Web scraping
+       ## Задача 6. Web scraping
 Дан вот такой несложный пример HTML страницы:
 
 http://www.columbia.edu/~fdc/sample.html
